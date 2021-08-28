@@ -2,7 +2,7 @@ package com;
 //import java.util.*;
 public class Bus
 {
-    private final int seats=45;
+    private int seats=45;
     //private String bookingId;
     private final int seatCost=200;
     //Map<String,String> bookList= new HashMap<>();
@@ -20,6 +20,11 @@ public class Bus
     public synchronized int getSeatCost()
     {
         return this.seatCost;
+    }
+
+    public synchronized void setSeats(int x)
+    {
+        this.seats-=x;
     }
 
     public synchronized String getSeatsToBook()

@@ -43,6 +43,7 @@ public class Client
                     if (cnf.equalsIgnoreCase("y")) {
                         String finalmsg = dis.readUTF();
                         System.out.println(finalmsg);
+                        System.out.println(dis.readUTF());
                     }
                 }
                 else

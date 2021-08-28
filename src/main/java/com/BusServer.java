@@ -33,6 +33,9 @@ public class BusServer
                     String cnf = dis.readUTF();
                     if (cnf.equalsIgnoreCase("Y")) {
                         dout.writeUTF("Booking Confirmed for " + s + " seats @ " + x * mybus.getSeatCost());
+                        mybus.setSeats(x);
+                        System.out.println(mybus.viewSeats());
+                        dout.writeUTF(mybus.viewSeats());
                     }
                 }
                 else
