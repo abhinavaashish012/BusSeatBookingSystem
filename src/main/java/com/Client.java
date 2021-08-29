@@ -33,7 +33,6 @@ public class Client
                 String msgForSeatsToBook =  dis.readUTF();
                 System.out.println(msgForSeatsToBook);
                 String busSeats=brclient.readLine();
-//                if(Integer.parseInt(busSeats)>)
                 dout.writeUTF(busSeats);//entering the seats to book
                 String cnfCheck= dis.readUTF();
                 if(!cnfCheck.equalsIgnoreCase("-1")) {
@@ -49,10 +48,10 @@ public class Client
                 else
                     System.out.println("Not enough Seats!!!");
             }
-            System.out.println("Ending connection from the client side...");
-            dout.flush();
-            dout.close();
-            s.close();
+//            System.out.println("Ending connection from the client side...");
+//            dout.flush();
+//            dout.close();
+//            s.close();
         }
         catch (Exception e)
         {
