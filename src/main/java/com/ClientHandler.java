@@ -34,12 +34,18 @@ public class ClientHandler implements Runnable{
                 System.out.println("Sending message to get seats to book.....");
                 dout.writeUTF(mybus.getSeatsToBook());
                 int x = Integer.parseInt(dis.readUTF());//reading the seats entered
-                if (x <= mybus.getRemSeats() && x>0) {
+                if (mybus.getRemSeats()>0 && x <= mybus.getRemSeats() && x>0) {
                     dout.writeUTF(mybus.takeConfirmation(x));
                     String cnf = dis.readUTF();
-                    if (cnf.equalsIgnoreCase("Y")) {
-                        dout.writeUTF("Booking Confirmed for " + s + " seats @ " + x * mybus.getSeatCost());
+                    if (mybus.getRemSeats()-x>0 && cnf.equalsIgnoreCase("Y")) {
+                        dout.writeUTF("Booking Confirmed for " + s.toString() +" " + x +" seats @ " + x * mybus.getSeatCost());
                         mybus.setSeats(x);
+                        System.out.println(mybus.viewSeats());
+                        dout.writeUTF(mybus.viewSeats());
+                    }
+                    if (mybus.getRemSeats()-x<0)
+                    {
+                        dout.writeUTF("Not enough seats available!!!");
                         System.out.println(mybus.viewSeats());
                         dout.writeUTF(mybus.viewSeats());
                     }
